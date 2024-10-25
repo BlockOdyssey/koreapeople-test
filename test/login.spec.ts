@@ -1,13 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { appConfig } from '../app.config';
 
 test.describe('login test', () => {
   test('should login successfully', async ({ page }) => {
-    const myEmail = 'sangyun.lee@blockodyssey.io';
-
     await page.goto('https://admin-qa.koreapeople.or.kr/login');
 
-    await page.fill('input[name="mail"]', myEmail);
-    await page.fill('input[name="password"]', 'dltkddbs123');
+    await page.fill('input[name="mail"]', appConfig.email);
+    await page.fill('input[name="password"]', appConfig.password);
 
     await page.click('button[type="submit"]');
 
